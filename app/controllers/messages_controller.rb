@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
   end
   
   def create
+    #binding.pry
     @message = Message.new(message_params)
     if @message.save
       # メッセージの保存に成功した場合
