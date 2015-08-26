@@ -1,7 +1,16 @@
 // Place all the styles related to the Messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.post-title {
+    border-bottom: 1px solid #535353;
+}
+
+.f11em { font-size: 1.1em; }
+.f12em { font-size: 1.2em; }
+.f13em { font-size: 1.3em; }
+.f14em { font-size: 1.4em; }
 .f15em { font-size: 1.5em; }
+.f20em { font-size: 2.0em; }
 
 .aRight { text-align: right; }
 .aLeft { text-align: left; }

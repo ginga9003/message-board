@@ -1,8 +1,7 @@
 <div class="panel panel-primary">
-    <div class="panel-heading" id="lang1">Message List</div>
+    <div class="panel-heading" id="title-message">Message List</div>
     
     <div class="panel-body">
-        <p><%= notice %></p>
         <% @messages.each do  |message| %>
             <span class="label label-info"><%= message.name %></span>
             <%= message.body %>
@@ -11,27 +10,28 @@
     </div>
 </div>
 
-<div class="panel panel-default">
-    <div class="panel-heading" id="lang2">Entry</div>
-    <div class="row">
-        <div class="col-md-6 col-xs-12">
-            <div class="row">
+<div class="row">
+    <div class="col-sm-6">
+        <fieldset>
+            <div class="panel panel-default" style="background-color: #eeeeee;">
+                <div class="panel-body" id="lang2"><legend class="f15em" id="title-post">Post</legend>
+                    <div class="row">
+                        <div class="col-xs-12">
 <%= form_for(Message.new) do |f| %>
-                <div class="col-xs-12">
-                    <div class="form-group mgt10 mgl10">
-                        <div class="label label-success" id="lang3"><span class="glyphicon glyphicon-user" aria-hidden="true"> Name</div>
-                        <%= f.text_field :name, class: "" %>
-                    </div>
-                </div>                
-                <div class="col-xs-12">
-                    <div class="form-group mgt10 mgl10">
-                        <div class="label label-success" id="lang4"><span class="glyphicon glyphicon-comment" aria-hidden="true"> Message</div>
-                        <%= f.text_area :body %>
+                            <div class="form-group mgt10">
+                                <label id="input-name" for="name" class="control-label"><span class="glyphicon glyphicon-user" aria-hidden="true"> Name</label>
+                                <p><%= f.text_field :name, class: "form-control", placeholder: "name", id: "name" %></p>
+                            </div>
+                            <div class="form-group mgt10">
+                                <label id="input-message" for="message" class="control-label"><span class="glyphicon glyphicon-comment" aria-hidden="true"> Message</label>
+                                <p><%= f.text_area :body, class: "form-control", placeholder: "Message", id: "message" %></p>
+                            </div>
+                            <%= f.submit class: "btn btn-sm btn-primary", value: "Post Message" %>
+<% end %>
+                        </div>
                     </div>
                 </div>
-                <%= f.submit class: "btn btn-sm btn-primary mgl20", value: "Send Message" %>
-<% end %>
             </div>
-        </div>
+        </fieldset>
     </div>
 </div>
