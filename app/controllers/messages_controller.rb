@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :set_message, only: [:edit, :update]  # edit, updateの処理の前にmessageを設定する
+  before_action :set_message, only: [:edit, :update, :destroy]  # edit, update, destroyの処理の前にmessageを設定する
   
   def index
     # Messageをすべて取得する
@@ -26,6 +26,7 @@ class MessagesController < ApplicationController
   end
   
   def update
+    binding.pry
     if @message.update(message_params)
       # 更新に成功した場合
       # リダイレクト
@@ -34,6 +35,11 @@ class MessagesController < ApplicationController
       # 更新に失敗した場合
       render 'render'
     end
+  end
+  
+  def destroy
+    @message.destroy
+    redirect_to root_path , notice: 'メッセージを削除しました'
   end
   
   private
