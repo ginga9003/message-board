@@ -1,24 +1,41 @@
-<%= form_for(@message) do |f| %>
-    <% if @message.errors.present? %>
-        <div class="alert alert-danger">
-            <%= alert %>
-            <ul>
-                <% @message.errors.full_messages.each do |full_message| %>
-                <li>
-                    <%= full_message %>
-                </li>
-                <% end %>
-            </ul>
-        </div>
-    <% end %>
-    
-    名前：
-    <%= f.text_field :name %>
-    
-    年齢：
-    <%= f.text_field :age class="number" %>
-
-    内容：
-    <%= f.text_field :body %>
-    <%= f.submit class: "btn btn-sm btn-primary" %>
+<div class="row">
+    <div class="col-sm-6">
+        <fieldset>
+            <div class="panel panel-default" style="background-color: #eeeeee;">
+                <div class="panel-body" id="lang2"><legend class="f15em" id="title-post">Post</legend>
+                    <div class="row">
+                        <div class="col-xs-12">
+<% if @message.errors.present? %>
+                            <div class="alert alert-danger">
+                                <%= alert %>
+                                <ul>
+                                    <% @message.errors.full_messages.each do |full_message| %>
+                                    <li>
+                                        <%= full_message %>
+                                    </li>
+                                    <% end %>
+                                </ul>
+                            </div>
 <% end %>
+<%= form_for(Message.new) do |f| %>
+                            <div class="form-group mgt10">
+                                <label id="input-name" for="name" class="control-label"><span class="glyphicon glyphicon-user" aria-hidden="true"> Name</label>
+                                <p><%= f.text_field :name, class: "form-control", placeholder: "name", id: "name" %></p>
+                            </div>
+                            <div class="form-group mgt10">
+                                <label id="input-name" for="age" class="control-label"><span class="glyphicon glyphicon-user" aria-hidden="true"> Age</label>
+                                <p><%= f.text_field :age, class: "number form-control", placeholder: "31", id: "age" %></p>
+                            </div>
+                            <div class="form-group mgt10">
+                                <label id="input-message" for="message" class="control-label"><span class="glyphicon glyphicon-comment" aria-hidden="true"> Message</label>
+                                <p><%= f.text_area :body, class: "form-control", placeholder: "Message", id: "message" %></p>
+                            </div>
+                            <%= f.submit class: "btn btn-sm btn-primary", value: "Post Message" %>
+<% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>
