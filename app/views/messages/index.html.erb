@@ -2,11 +2,11 @@
     <div class="panel-heading" id="title-message">Message List</div>
     
     <div class="panel-body">
-        <% @messages.each do  |message| %>
-            <span class="label label-info"><%= message.name %></span>
+        <% @messages.each do |message| %>
+            <span class="label label-info mgr5"><%= message.name %> <% if message.age %>(<%= message.age %>)<% end %></span>
             <%= message.body %>
-            （<%= link_to "edit" , edit_message_path(message) %>）
-            （<%= link_to "destroy" , message, method: :delete, data: { confirm: '削除してもよろしいですか？' } %>）
+            <%= link_to "edit" , edit_message_path(message), :class => "label label-success" %>
+            <%= link_to "destroy" , message, method: :delete, data: { confirm: '削除してもよろしいですか？' }, :class => "label label-danger" %>
             <br />
         <% end %>
     </div>

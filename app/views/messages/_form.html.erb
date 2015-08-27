@@ -5,7 +5,7 @@
                 <div class="panel-body" id="lang2"><legend class="f15em" id="title-post">Post</legend>
                     <div class="row">
                         <div class="col-xs-12">
-<% if @message.errors.present? %>
+                        <% if @message.errors.present? %>
                             <div class="alert alert-danger">
                                 <%= alert %>
                                 <ul>
@@ -16,22 +16,25 @@
                                     <% end %>
                                 </ul>
                             </div>
-<% end %>
-<%= form_for(Message.new) do |f| %>
+                        <% end %>
+                        <%= form_for(@message) do |f| %>
                             <div class="form-group mgt10">
                                 <label id="input-name" for="name" class="control-label"><span class="glyphicon glyphicon-user" aria-hidden="true"> Name</label>
                                 <p><%= f.text_field :name, class: "form-control", placeholder: "name", id: "name" %></p>
                             </div>
                             <div class="form-group mgt10">
-                                <label id="input-name" for="age" class="control-label"><span class="glyphicon glyphicon-user" aria-hidden="true"> Age</label>
+                                <label id="input-name" for="age" class="control-label"><span class="glyphicon glyphicon-hourglass" aria-hidden="true"> Age</label>
                                 <p><%= f.text_field :age, class: "number form-control", placeholder: "31", id: "age" %></p>
                             </div>
                             <div class="form-group mgt10">
                                 <label id="input-message" for="message" class="control-label"><span class="glyphicon glyphicon-comment" aria-hidden="true"> Message</label>
                                 <p><%= f.text_area :body, class: "form-control", placeholder: "Message", id: "message" %></p>
                             </div>
-                            <%= f.submit class: "btn btn-sm btn-primary", value: "Post Message" %>
-<% end %>
+                            <%= f.submit "Post Message", class: "btn btn-sm btn-primary" %>
+                            <% if controller.action_name == "edit" %>
+                            <%= f.button "Back", class: "btn btn-sm btn-primary", type: "button", id: "returnButton", onclick: "history.back();" %>
+                            <% end %>
+                        <% end %>
                         </div>
                     </div>
                 </div>

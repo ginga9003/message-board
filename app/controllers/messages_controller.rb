@@ -26,7 +26,7 @@ class MessagesController < ApplicationController
   end
   
   def update
-    binding.pry
+    #binding.pry
     if @message.update(message_params)
       # 更新に成功した場合
       # リダイレクト
@@ -45,12 +45,22 @@ class MessagesController < ApplicationController
   private
   def message_params
     # パラメータを受け取る
-    # params[:message]のパラメータで name , bodyのみを許可する。
-    # 返り値は ex:) {name: "入力されたname" , body: "入力されたbody" }
-    params.require(:message).permit(:name, :body)
+    # params[:message]のパラメータで name ,age, bodyのみを許可する。
+    # 返り値は ex:) {name: "入力されたname" , age: "入力されたage", body: "入力されたbody" }
+    params.require(:message).permit(:name, :age, :body)
   end
   
   def set_message
     @message = Message.find(params[:id])
+
+    if params.has_key?(:message)
+      @return = params[:message][:return]
+      
+      #binding.pry
+      if @return.to_i == 1
+        # 戻る
+        redirect_to root_path
+      end
+    end
   end
 end
