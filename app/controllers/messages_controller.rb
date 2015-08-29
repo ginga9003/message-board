@@ -33,7 +33,7 @@ class MessagesController < ApplicationController
       redirect_to root_path , notice: 'メッセージを編集しました'
     else
       # 更新に失敗した場合
-      render 'render'
+      render 'edit'
     end
   end
   
